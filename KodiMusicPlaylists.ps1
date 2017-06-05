@@ -10,7 +10,7 @@
 Param(
   [Parameter(Mandatory=$True)][string]$Cred
 )
-$Cred1="eee"
+
 Add-Type –Path 'C:\Program Files (x86)\MySQL\MySQL Connector Net 6.9.8\Assemblies\v4.5\MySql.Data.dll'
 $Year=get-date -Format yyyy
 $Connection = [MySql.Data.MySqlClient.MySqlConnection]@{ConnectionString=''}
