@@ -15,7 +15,8 @@ Add-Type –Path 'C:\Program Files (x86)\MySQL\MySQL Connector Net 6.9.8\Assemblie
 $Year=get-date -Format yyyy
 $Connection = [MySql.Data.MySqlClient.MySqlConnection]@{ConnectionString=''}
 $Connection.ConnectionString="server=lattuce-dc.lattuce.com;uid=xbmc;pwd=$Cred;database=mymusic56"
-$OutputFile = "\\10.10.1.24\Userdata\playlists\music\Music Added in $($Year).m3u"
+$OutputFile1 = "\\10.10.1.24\Userdata\playlists\music\Music Added in $($Year).m3u"
+$OutputFile2 = "\\media-gym.lattuce.com\c$\Users\media\AppData\Roaming\Kodi\userdata\playlists\music\Music Added in $($Year).m3u"
 
 $Connection.Open()
 $MYSQLCommand = New-Object MySql.Data.MySqlClient.MySqlCommand
@@ -35,13 +36,18 @@ $MYSQLDataAdapter.SelectCommand=$MYSQLCommand
 $NumberOfDataSets=$MYSQLDataAdapter.Fill($MYSQLDataSet, "data")
 
 # Remove the Existing File if it exists
-If (Test-Path $OutputFile){
-	Remove-Item $OutputFile
+If (Test-Path $OutputFile1){
+	Remove-Item $OutputFile1
 }
+If (Test-Path $OutputFile2){
+	Remove-Item $OutputFile2
+}
+
 
 # Write the New Playlist
 foreach($DataSet in $MYSQLDataSet.tables[0]) {
-	$DataSet[0] | Out-File $OutputFile -append -encoding ASCII
+	$DataSet[0] | Out-File $OutputFile1 -append -encoding ASCII
+	$DataSet[0] | Out-File $OutputFile2 -append -encoding ASCII
 }
 
 $Connection.Close()
