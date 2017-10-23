@@ -29,13 +29,7 @@
   <ItemGroup>
     <Content Include=".gitattributes" />
     <Content Include=".gitignore" />
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="Backup.ps1" />
-    <Compile Include="DeleteJunkFiles.ps1" />
-    <Compile Include="KodiMusicPlaylists.ps1" />
-    <Compile Include="Reboot-lattuce-dc.ps1" />
-    <Compile Include="Time.ps1" />
+    <Content Include="BatchCropAndStraighten.jsx" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Target Name="Build" />
