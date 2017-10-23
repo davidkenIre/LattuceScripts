@@ -3,7 +3,7 @@
 # Originally sourced from https://www.thelacunablog.com/batch-crop-straighten-scanned-photos.html
 
 
-#target Photoshop
+#target Photoshop 
 app.bringToFront;
 var SelectedFolder = Folder.selectDialog("Please select folder to process");
 ProcessFolder(SelectedFolder);
