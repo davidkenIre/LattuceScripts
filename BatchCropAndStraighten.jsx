@@ -1,4 +1,3 @@
-#
 # BatchCropAndStraighten.ps1
 # Originally sourced from https://www.thelacunablog.com/batch-crop-straighten-scanned-photos.html
 
